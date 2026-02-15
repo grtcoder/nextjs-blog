@@ -19,14 +19,10 @@ export default function ParticleBackground() {
 
     const resize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = document.documentElement.scrollHeight;
+      canvas.height = window.innerHeight;
     };
     resize();
     window.addEventListener('resize', resize);
-
-    // Re-size canvas when page content changes height
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(document.body);
 
     const spawn = () => {
       if (particles.length > 200) return;
@@ -99,7 +95,6 @@ export default function ParticleBackground() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
-      resizeObserver.disconnect();
     };
   }, []);
 
