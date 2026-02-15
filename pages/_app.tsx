@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ParticleBackground from '../components/ParticleBackground';
 import '../styles/globals.css';
 
 const darkTheme = createTheme({
@@ -18,7 +19,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
+      <ParticleBackground />
+      <Box sx={{ bgcolor: 'transparent', minHeight: '100vh', position: 'relative', zIndex: 1 }}>
         <Navbar />
         <Box sx={{ pt: 8 }}>
           <Component {...pageProps} />
